@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDog, faEdit, faPaw , faPlus, faCamera} from '@fortawesome/free-solid-svg-icons'; 
 import "./singlepatient.css";
 
-import { useNavigate } from "react-router-dom"; 
 
 import axios from 'axios' ; 
 
@@ -55,20 +54,14 @@ function Singlepatient() {
     const[ores,setOres] = useState('');
     const[retreat,setRetreat] = useState('');
     const[nacrosis,setNacrosis] = useState('');
-    const[allergies,setAllergies] = useState({ val: []});
+    //const[allergies,setAllergies] = useState({ val: []});
 
 
-    function addAllergies(){
-
-        let vals = [...allergies.val];
-        vals[this] = '   ';
-        setAllergies({ val: vals });
-    
-    }
+   
     
     function addpatient()
     {
-         let navigate = useNavigate();
+         
         var myJson = { 
 
             name: name, 
@@ -113,7 +106,7 @@ function Singlepatient() {
           })
             .then(function (response) {
               //handle success
-            navigate('/Patients')
+             
              
             })
             .catch(function (response) {
@@ -365,14 +358,10 @@ function Singlepatient() {
                 <div style={{display:'flex' , justifyContent:'space-around'}}>
                         <div style={{width:'50%' , marginTop:'10px',float:'left'}}>
                            
-
-                        {allergies.val.map((input, index) => {
-                            <div key={index} style={{display :'flex' , justifyContent:'flex-end' ,  marginBottom:'8px'}}>
+<div  style={{display :'flex' , justifyContent:'flex-end' ,  marginBottom:'8px'}}>
                                 <span className='label'>Allergy</span>
-                                <input type='text' className="inputType" onChange={(e) => setAllergies(e.target.value)} value={input}   />
                             </div>
-
-                                })}
+                        
                             
 
                         </div>  
@@ -383,7 +372,7 @@ function Singlepatient() {
                     </div> 
 
 
-                    <button   onClick={()=>addAllergies()} className='createbtn' style={{marginTop:'-1px', marginLeft:'-1px' , color:'#21AAE1' ,width:'140px' ,height:'40px' ,backgroundColor:'#FFFFFF'}}>
+                    <button   className='createbtn' style={{marginTop:'-1px', marginLeft:'-1px' , color:'#21AAE1' ,width:'140px' ,height:'40px' ,backgroundColor:'#FFFFFF'}}>
                         <FontAwesomeIcon icon={faPlus} /> Add Allergy
                     </button>                   
                 </div>
