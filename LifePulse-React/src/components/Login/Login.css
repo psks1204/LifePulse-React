@@ -1,0 +1,118 @@
+.container{
+    display: flex;    
+    height:100vh;
+}
+
+.login{
+    width:60%;
+    background-color:#3D67B1;
+
+}
+.logo{
+    margin-top: 10%;
+}
+
+.box{     
+    width:75%;
+    margin : 100px 50px;
+    height:75%;     
+}
+
+.text{
+    color: #000000;
+    font-weight: bold;
+    font-size: 48px;
+    margin-left: 32%;
+    margin-top: 6%;  
+    margin-bottom: 50px;  
+}
+.email{ 
+    color: #000000;
+    border-radius: 10px;
+    border: 0.8px solid grey;
+    opacity: 0.5;
+    margin-bottom: 8px;
+    width:240px;
+    height:40px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25) ;
+    padding-left: 55px;
+    /* color: #3D67B1; */
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.ftpswd{
+    color:#27AAE2;
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 136px;
+    margin-bottom: 20px;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ 
+.button{
+    width:240px;
+    height:40px;
+    background-color: #3D67B1;
+    border: 0.5px solid  #3D67B1;
+    border-radius:30px ;
+    color:#FFFFFF;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+
+
+}
+.button:hover{
+    cursor: pointer;
+}
+
+.signup{
+    width:240px;
+    height:40px;
+    background-color: #FFFFFF;
+    border: 3px solid  #3D67B1;
+    border-radius:30px ;
+    color:#3D67B1;
+    font-weight: 700;
+    font-size: 20px; 
+    margin-top: 5px;
+}
+
+.line{    
+    border:none;
+    border-top: 1px solid grey;
+    width:90px;  
+    margin: 10px 5px;  
+ 
+}
+
+.wrapper {
+    position:relative;
+    margin-bottom: 12px;
+  }
+  
+  .icon {
+    height: 1rem;
+    width: 1rem; 
+    padding: 4px;    
+    position: absolute;
+    box-sizing:border-box;
+    top:42%;
+    left:12px;
+    transform: translateY(-50%);
+    font-weight: 400;
+  }
+  
+  .inputxx {
+    height: 50px;
+    box-sizing:border-box;
+    padding-left:2.5rem;
+   
+  }

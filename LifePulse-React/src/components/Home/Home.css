@@ -1,0 +1,60 @@
+.header{
+  display: flex;
+  margin-bottom: 10px;
+   
+}
+.card{
+  max-width:180px ;
+  text-align:'center' ;
+  margin-left: 24px;
+  padding:24px  ;
+  margin-bottom: 10px;
+  vertical-align: baseline;
+  cursor: pointer;
+}
+
+.icon{
+  display: flex;
+   
+}
+
+.line{
+  border: 1px solid grey;
+  border-radius: 0.5px;
+
+}
+
+.one-edge {
+  /* -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black; */
+   box-shadow: 0 8px 6px -6px #ccc;
+}
+
+
+.wrapper {
+  position:relative;
+  margin-bottom: 16px;
+}
+.icon {
+  height: 2.0rem;
+  width: 2.0rem; 
+  padding: 4px;    
+  position: absolute;
+  box-sizing:border-box;
+  top:32px;
+  left:12px;
+  transform: translateY(-50%);
+  font-weight: 400;
+  
+}
+
+.searchicon{
+  margin-left: 20px;
+}
+
+.change{
+  background-color: #3C68B1 !important;
+  color: #FFFFFF !important ;  
+
+}
+
