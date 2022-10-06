@@ -4,7 +4,7 @@ import { Link ,  } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDog, faEdit, faPaw , faPlus, faCamera} from '@fortawesome/free-solid-svg-icons'; 
 import "./singlepatient.css";
-
+import { useNavigate } from "react-router-dom";
 
 import axios from 'axios' ; 
 
@@ -13,7 +13,7 @@ function Singlepatient() {
     // const location = useLocation();
     //console.log(location)    
     
-    
+    let navigate = useNavigate();
     const[name,setName] = useState('');
     const[owner,setOwner] = useState('');
     const[ownerContact,setOwnerContact] = useState('');
@@ -106,7 +106,7 @@ function Singlepatient() {
           })
             .then(function (response) {
               //handle success
-             
+              navigate('/patients' );
              
             })
             .catch(function (response) {
