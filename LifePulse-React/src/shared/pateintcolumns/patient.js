@@ -30,7 +30,7 @@ const columns = [
     dataIndex: "name",
     render: (text, record) => (
       <Link
-        to="/patientDetail"
+        to={`/patientDetail?id=${record.key}`}
         state={{ from: text }}
         style={{ color: "blue" }}
       >
@@ -67,7 +67,7 @@ const columns = [
 const patientTreatment = [
   {
     title: "Treatment",
-    dataIndex: "treatment",
+    dataIndex: "treatmentName",
     render: (text, record) => (
       <Link
         to="/patientDetail"
@@ -94,7 +94,7 @@ const patientTreatment = [
     title: "Date",
     dataIndex: "date",
     sorter: (a, b) => a.date - b.date,
-  }
+  },
 ];
 const patientPrevTreatment = [
   {
