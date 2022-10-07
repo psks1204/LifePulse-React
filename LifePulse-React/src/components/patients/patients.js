@@ -34,7 +34,7 @@ function Patients(   ) {
                     marginLeft: "18px",
                   }}
                 >
-                  <SearchBar placeholder="My Patients" />
+                  <SearchBar placeholder="Search Patients" />
                 </div>
                 <button
                   onClick={() => {
