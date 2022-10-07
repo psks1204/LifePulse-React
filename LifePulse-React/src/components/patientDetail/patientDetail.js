@@ -356,7 +356,10 @@ function PatientDetail() {
                 marginRight: 28,
               }}
             >
-              <button className="createbtn">
+              <button
+                className="createbtn"
+                onClick={() => history("/addTherapy")}
+              >
                 <FontAwesomeIcon icon={faPlus} /> Add Therapy
               </button>
             </div>
