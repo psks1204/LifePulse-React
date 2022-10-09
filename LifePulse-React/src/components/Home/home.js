@@ -1,88 +1,147 @@
-import './Home.css';
-import Header from "../header/Header"
-import logo from "./../../assets/logo.svg"; 
-import Card from '@material-ui/core/Card'
-import { Typography } from '@material-ui/core'; 
-import { useState} from 'react'; 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHomeAlt, faInfoCircle , faPaw , faLaptopMedical} from '@fortawesome/free-solid-svg-icons'; 
+import "./Home.css";
+import Header from "../header/Header";
+import logo from "./../../assets/logo.svg";
+import Card from "@material-ui/core/Card";
+import { Typography } from "@material-ui/core";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHomeAlt,
+  faInfoCircle,
+  faPaw,
+  faLaptopMedical,
+} from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
- 
-  const [headerData , setHeaderData] = useState("HomePage")
+  const [headerData, setHeaderData] = useState("HomePage");
   let navigate = useNavigate();
-  
-  const setHeaderDatad = (key) =>{
-    setHeaderData(key)
-  }
-  const clickHandler =(key) => {
-    if (key === "patients"){
-      setHeaderData('My Patients')
-      
-        navigate('/patients' )
 
-    }else  if (key === "devices"){
-      setHeaderData('My Devices')
-      
-        navigate('/devices')
-      
-    }else  if (key === "info"){
-      setHeaderData('Info');
-      navigate('/info')
-       
-    }
-    else{
-      setHeaderData('HomePage')
-      navigate('/home')
-    }
+  const setHeaderDatad = (key) => {
+    setHeaderData(key);
+  };
+  const clickHandler = (key) => {
+    if (key === "patients") {
+      setHeaderData("My Patients");
+      navigate("/patients");
+    } else if (key === "devices") {
+      setHeaderData("My Devices");
 
-  }
+      navigate("/devices");
+    } else if (key === "info") {
+      setHeaderData("Info");
+      navigate("/info");
+    } else {
+      setHeaderData("HomePage");
+      navigate("/home");
+    }
+  };
   return (
-    <div className="App">   
-      <div className='header'>
-        <div style={{minWidth:'200px'}}>
-             <img src={logo}  alt='logo' />
-             <div>
-           
-          <Card className={`card ${headerData === "HomePage"  && `change`}`} onClick={ ()=>{clickHandler('HomePage')  } }      >
-            <Typography color={`${headerData === "HomePage" ? 'white' : `primary`}`}>
-                <div style={{display:'flex'}}  >
-                  <FontAwesomeIcon icon={faHomeAlt} style={{marginRight:'10px' , marginTop:'6px'}}  />
-                  <span  >Home</span>   
+    <div className="App">
+      <div className="header">
+        <div style={{ minWidth: "265px" }}>
+          <img src={logo} alt="logo" />
+          <div>
+            <Card
+              className={`card ${headerData === "HomePage" && `change`}`}
+              onClick={() => {
+                clickHandler("HomePage");
+              }}
+            >
+              <Typography
+                color={`${headerData === "HomePage" ? "white" : `primary`}`}
+                style={{ fontSize: 24 }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+
+                    alignItems: "center",
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faHomeAlt}
+                    style={{ marginRight: "10px", width: 38, height: 38 }}
+                  />
+                  <span>Home</span>
                 </div>
               </Typography>
-          </Card>
-          <Card className={`card ${headerData === "My Patients"  && 'change'}`}  onClick={ ()=> clickHandler('patients') }      >
-            <Typography color={`${headerData === "My Patients" ? '#FFFFFF' : 'primary'}`}>
-                <div style={{display:'flex'}}  >
-                  <FontAwesomeIcon icon={faPaw} style={{marginRight:'10px' , marginTop:'6px'}}  />
-                    Patients
+            </Card>
+            <Card
+              className={`card ${headerData === "My Patients" && "change"}`}
+              onClick={() => clickHandler("patients")}
+            >
+              <Typography
+                color={`${
+                  headerData === "My Patients" ? "#FFFFFF" : "primary"
+                }`}
+                style={{ fontSize: 24 }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+
+                    alignItems: "center",
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faPaw}
+                    style={{ marginRight: "10px", width: 38, height: 38 }}
+                  />
+                  <span>Patients</span>
                 </div>
               </Typography>
-          </Card>
-          <Card className={`card ${headerData === "My Devices"  && 'change'}`}  onClick={ ()=> clickHandler('devices') }      >
-              <Typography color={`${headerData === "My Devices" ? '#FFFFFF' : 'primary'}`}>
-                <div style={{display:'flex'}}>
-                  <FontAwesomeIcon icon={faLaptopMedical} style={{marginRight:'10px' , marginTop:'6px'}} />
-                    Devices
+            </Card>
+            <Card
+              className={`card ${headerData === "My Devices" && "change"}`}
+              onClick={() => clickHandler("devices")}
+            >
+              <Typography
+                color={`${headerData === "My Devices" ? "#FFFFFF" : "primary"}`}
+                style={{ fontSize: 24 }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+
+                    alignItems: "center",
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faLaptopMedical}
+                    style={{ marginRight: "10px", width: 38, height: 38 }}
+                  />
+                  <span>Devices</span>
                 </div>
               </Typography>
-            
-          </Card>
-          <Card className={`card ${headerData === "Info"  && 'change'}`}  onClick={ ()=> clickHandler('info') }      >
-          <Typography color={`${headerData === "Info" ? '#FFFFFF' : 'primary'}`}>
-                <div style={{display:'flex'}}>
-                  <FontAwesomeIcon icon={faInfoCircle} style={{marginRight:'10px' , marginTop:'6px'}} />
-                    Info
+            </Card>
+            <Card
+              className={`card ${headerData === "Info" && "change"}`}
+              onClick={() => clickHandler("info")}
+            >
+              <Typography
+                color={`${headerData === "Info" ? "#FFFFFF" : "primary"}`}
+                style={{ fontSize: 24 }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+
+                    alignItems: "center",
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faInfoCircle}
+                    style={{ marginRight: "10px", width: 38, height: 38 }}
+                  />
+                  <span>Information</span>
                 </div>
               </Typography>
-            
-          </Card>
-        </div> 
+            </Card>
+          </div>
         </div>
-          <div style={{width:'100%'}} >
-          <Header name= {headerData} />
+        <div style={{ width: "100%" }}>
+          <Header name={headerData} />
           {/* { headerData !== "HomePage" && headerData !== "Help" &&
             <>
               <div style={{ display:'flex' ,   justifyContent:'flex-start'}} >
@@ -101,11 +160,8 @@ function Home() {
               </div>
             </>
           } */}
+        </div>
       </div>
-      </div>
-      
-
-
     </div>
   );
 }

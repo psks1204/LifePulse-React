@@ -20,7 +20,7 @@ import { faEnvelope , faKey} from '@fortawesome/free-solid-svg-icons'
     let navigate = useNavigate();
     const clickHandler =() =>{
         if ( username === 'Test@mmdtech.ci' && password === 'Welcome@123'){
-            navigate('/home')
+            navigate('/patients')
         }
         return
     }

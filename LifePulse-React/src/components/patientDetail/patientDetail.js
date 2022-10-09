@@ -358,7 +358,7 @@ function PatientDetail() {
             >
               <button
                 className="createbtn"
-                onClick={() => history("/addTherapy")}
+                onClick={() => history(`/addTherapy?id=${id}`)}
               >
                 <FontAwesomeIcon icon={faPlus} /> Add Therapy
               </button>
@@ -491,6 +491,7 @@ function PatientDetail() {
                       marginRight: 40,
                       backgroundColor: "#FFFFFF",
                     }}
+                    onClick={() => history(`/addTreatment?id=${id}`)}
                   >
                     <FontAwesomeIcon icon={faPlus} /> Add Treatment
                   </button>
@@ -547,6 +548,7 @@ function PatientDetail() {
                 marginRight: 40,
                 backgroundColor: "#FFFFFF",
               }}
+              onClick={() => history(`/addTreatment?id=${id}`)}
             >
               <FontAwesomeIcon icon={faPlus} /> Add Treatment
             </button>

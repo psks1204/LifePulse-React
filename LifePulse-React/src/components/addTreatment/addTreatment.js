@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./addTherapy.css";
+import "./addTreatment.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   Checkbox,
@@ -11,7 +11,7 @@ import {
 import { faPlay, faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AddTherapy = () => {
+const AddTreatment = () => {
   const search = useLocation().search;
   const id = new URLSearchParams(search).get("id");
 
@@ -551,4 +551,4 @@ const AddTherapy = () => {
   );
 };
 
-export default AddTherapy;
+export default AddTreatment;

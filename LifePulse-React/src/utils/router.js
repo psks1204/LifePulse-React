@@ -8,6 +8,7 @@ import landingpage from "../components/landingPage/landinpage";
 import Singlepatient from "../components/singlePatient/singlepatient";
 import PatientDetail from "../components/patientDetail/patientDetail";
 import AddTherapy from "../components/addTherapy/addTherapy";
+import AddTreatment from "../components/addTreatment/addTreatment";
 
 export const homepath = "/home"
 export const helppath='/info'
@@ -17,6 +18,7 @@ export const devicespath="/devices"
 export const addpatientpath="/addpatient"
 export const patientDetail="/patientDetail"
 export const addTherapy = "/addTherapy";
+export const addTreatment = "/addTreatment";
 
 export const routeConfig = [
   {
@@ -52,6 +54,11 @@ export const routeConfig = [
   {
     path: addTherapy,
     component: AddTherapy,
+    layout: Layout,
+  },
+  {
+    path: addTreatment,
+    component: AddTreatment,
     layout: Layout,
   },
   {
