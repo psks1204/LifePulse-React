@@ -57,6 +57,14 @@ function Singlepatient() {
   const [nacrosis, setNacrosis] = useState("");
   //const[allergies,setAllergies] = useState({ val: []});
 
+  const [allergyList, setAllergyList] = useState([]);
+
+  let handleChange = (index, item) => {
+    let newFormValues = [...allergyList];
+    newFormValues[index] = item;
+    setAllergyList(newFormValues);
+  };
+
   function addpatient() {
     var myJson = {
       name: name,
@@ -89,6 +97,7 @@ function Singlepatient() {
       ores: ores,
       retreat: retreat,
       nacrosis: nacrosis,
+      allergyList: allergyList,
     };
     axios({
       method: "post",
@@ -106,15 +115,15 @@ function Singlepatient() {
       });
   }
 
-  const [allergyList, setAllergyList] = useState([]);
-
   const addAllergyList = (length) => {
-    if (allergyList.length === length) {
-      setAllergyList((list) => {
-        list.push(allergyList.length);
-        return [...list];
-      });
-    }
+    // if (allergyList.length === length) {
+    //   setAllergyList((list) => {
+    //     list.push(allergyList.length);
+    //     return [...list];
+    //   });
+    // }
+
+    setAllergyList([...allergyList, ""]);
   };
   const deleteAllergy = (index) => {
     setAllergyList((list) => {
@@ -133,36 +142,39 @@ function Singlepatient() {
       </>
 
       <div>
-        <span>
-          <span>
-            {" "}
+        <div className="btn-container-main">
+          <div>
             <FontAwesomeIcon
-              icon={faDog}
+              icon={faPaw}
               style={{
-                marginTop: "20px",
                 color: "#3C68B1",
                 width: "45px",
                 height: "43px",
+                border: "1px solid #3C68B1",
+                borderRadius: "50%",
+                padding: 5,
+                filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
               }}
             />
-          </span>
-          <button className="upload">
-            <FontAwesomeIcon icon={faCamera} />
-            <span style={{ marginLeft: "10px" }}> {"Upload Photo"} </span>
-          </button>
-          <button
-            className="upload"
-            style={{
-              width: "150px",
-              marginLeft: "970px",
-              backgroundColor: "#D95767",
-              border: "1px solid #D95767",
-            }}
-          >
-            <FontAwesomeIcon icon={faEdit} />
-            <span style={{ marginLeft: "10px" }}> {"Cancel"} </span>
-          </button>
-        </span>
+          </div>
+          <div className="btn-container">
+            <button className="upload-photo">
+              <FontAwesomeIcon icon={faCamera} />
+              <span style={{ marginLeft: "10px" }}> {"Upload Photo"} </span>
+            </button>
+            <button
+              className="upload-photo-cancel"
+              style={{
+                width: "150px",
+                backgroundColor: "#D95767",
+                border: "1px solid #D95767",
+              }}
+            >
+              <FontAwesomeIcon icon={faEdit} />
+              <span style={{ marginLeft: "10px" }}> {"Cancel"} </span>
+            </button>
+          </div>
+        </div>
       </div>
 
       <div>
@@ -813,7 +825,10 @@ function Singlepatient() {
                         }}
                       >
                         <span className="label">Allergy</span>
-                        <input type="text" />
+                        <input
+                          type="text"
+                          onChange={(e) => handleChange(index, e.target.value)}
+                        />
                         <FontAwesomeIcon
                           icon={faTrash}
                           style={{

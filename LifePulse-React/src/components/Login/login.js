@@ -19,7 +19,7 @@ import { faEnvelope , faKey} from '@fortawesome/free-solid-svg-icons'
     }
     let navigate = useNavigate();
     const clickHandler =() =>{
-        if ( username === 'Test@mmdtech.ci' && password === 'Welcome@123'){
+        if ( username === 'Gary@lifepulsebio.com' && password === 'Welcome1'){
             navigate('/patients')
         }
         return
@@ -31,7 +31,7 @@ import { faEnvelope , faKey} from '@fortawesome/free-solid-svg-icons'
                 <Card className='box'>
                     <div className='text'> Login </div>
                     <div className='flex'>                           
-                        <div class="wrapper">
+                        <div className="wrapper">
                             <FontAwesomeIcon icon={faEnvelope} className="icon"  style={{width:'1rem'}}/>
                             <input placeholder='Email' className='email' type='email'  value={username} onChange={(event)=>emailChange(event)} />
                         </div>

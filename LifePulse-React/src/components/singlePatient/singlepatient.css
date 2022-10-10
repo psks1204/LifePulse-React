@@ -1,80 +1,102 @@
-.upload{
-box-sizing: border-box;
-position: absolute;
-width: 187px;
-height: 43px;
-left: 303px;
-top: 142px;
-background: #3C68B1;
-border: 2px solid #3C68B1;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 5px;
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-line-height: 19px;
+.upload-photo {
+  box-sizing: border-box;
+  width: 187px;
+  height: 43px;
+  background: #3c68b1;
+  border: 2px solid #3c68b1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
 
-color: #FFFFFF;
+  color: #ffffff;
+}
+.upload-photo-cancel {
+  box-sizing: border-box;
+  width: 187px;
+  height: 43px;
+  background: #3c68b1;
+  border: 2px solid #3c68b1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #ffffff;
 }
 
-.cardtitle{
-    background: #F5F4F7;
- 
-width: 1200px;
-height: 42px;
-left: 266px;
-top: 985px;
-margin-top: 10px;
-    
+.btn-container-main {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 42px;
+    align-items: center;
+    margin-bottom: 43px
 }
-.cardbody{
-width: 1200px;
-height: 210px;
-border:2px solid #FFFFFF;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-margin-bottom: 18px;
+.btn-container {
+    width: 1122px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.cardbody-theraphy
-{
-    width: 1200px;
-    height: 350px;
-    border:2px solid #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-bottom: 18px;
+.cardtitle {
+  background: #f5f4f7;
 
+  width: 1200px;
+  height: 42px;
+  left: 266px;
+  top: 985px;
+  margin-top: 10px;
+}
+.cardbody {
+  width: 1200px;
+  height: 210px;
+  border: 2px solid #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 18px;
 }
 
-.allergies{
-    height:43px
+.cardbody-theraphy {
+  width: 1200px;
+  height: 350px;
+  border: 2px solid #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 18px;
 }
 
-.createbtn{
-    width:"200px";
-    margin-left:490px;
-    margin-top:20px ;
-    padding:10px;
-    background-color:#21AAE1;
-    border: 2px solid #21AAe1;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
-    border-radius: 5px;  
-    margin-bottom: 20px;
-    color:#FFFFFF;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-    font-style: normal;
-    
+.allergies {
+  height: 43px;
 }
 
-.inputType{
-    margin-left:'10px';
-    border:1px solid #ccc ;
-    box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25) ;
-    border-radius:5px
+.createbtn {
+  width: "200px";
+  margin-left: 490px;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #21aae1;
+  border: 2px solid #21aae1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  font-style: normal;
 }
-.label{
-    font-weight: 700;
-    font-size: 16px;
-    margin-right: 8px;
+
+.inputType {
+  margin-left: "10px";
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+.label {
+  font-weight: 700;
+  font-size: 16px;
+  margin-right: 8px;
 }

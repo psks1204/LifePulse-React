@@ -2,26 +2,36 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./addTreatment.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import {
+  Button,
   Checkbox,
   FormControl,
   FormControlLabel,
   FormGroup,
 } from "@material-ui/core";
-import { faPlay, faSave } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlay,
+  faSave,
+  faCircleQuestion,
+  faEdit,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import ActionDialog from "../actionDialog/ActionDialog";
 const AddTreatment = () => {
   const search = useLocation().search;
   const id = new URLSearchParams(search).get("id");
-
+  let history = useNavigate();
   const [pDetail, setpDetail] = useState(null);
 
   //Theraphy
   const [theraphyName, setTheraphyName] = useState("");
   const [tindication, setTindication] = useState("");
   const [tumorType, setTumorType] = useState("");
+  const [length, setLength] = useState("");
+  const [width, setWidth] = useState("");
   const [tumorVolume, setTumorVolume] = useState("");
+
   const [grade, setGrade] = useState("");
   const [cellType, setCellType] = useState("");
   const [tnmStage, setTnmStage] = useState("");
@@ -39,12 +49,14 @@ const AddTreatment = () => {
   const [checkbox2, setCheckbox2] = useState(false);
   //const[allergies,setAllergies] = useState({ val: []});
 
+  const [tvolume, setTVolume] = useState(0);
+
   const addTherapy = () => {
     const obj = {
       theraphyName: theraphyName,
       tindication: tindication,
       tumorType: tumorType,
-      tumorVolume: tumorVolume,
+      tumorVolume: tumorVolume.toString(),
       grade: grade,
       cellType: cellType,
       tnmStage: tnmStage,
@@ -57,13 +69,25 @@ const AddTreatment = () => {
       retreat: retreat,
       nacrosis: nacrosis,
     };
-    const patientId = "925e7f6f-fa41-4118-90ef-5fe7536374e6";
-    axios.post(
-      `https://lifepulse-backend.herokuapp.com/addtherapy/${patientId}`,
-      obj
-    );
+    //const patientId = "925e7f6f-fa41-4118-90ef-5fe7536374e6";
+    axios
+      .post(`https://lifepulse-backend.herokuapp.com/addtherapy/${id}`, obj)
+      .then((res) => history(`/patientDetail?id=${id}`));
   };
-
+  const setTValue = (val) => {
+    let vol = (length * width * width * 3.14) / 6;
+    if (val == "Cisplatin") {
+      vol = (vol * 1) / 2;
+    } else if (val == "Bleomycin") {
+    } else if (val == "Calcium Cloride") {
+      vol = (vol * 1) / 2;
+    } else {
+      vol = 0;
+    }
+    setTVolume(vol);
+    setTumorVolume(vol.toString());
+    setTname(val);
+  };
   useEffect(() => {
     axios
       .get(`https://lifepulse-backend.herokuapp.com/patient?key=${id}`)
@@ -71,10 +95,32 @@ const AddTreatment = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const [openAction, setOpenAction] = useState(false);
+
+  const openDialog = () => {
+    setOpenAction(true);
+  };
+  const closeDialog = () => {
+    setOpenAction(false);
+  };
+
+  const dialogAction = () => {
+    setOpenAction(false);
+    history(`/patientDetail?id=${id}`);
+  };
+
   return (
     <>
       <div>
-        <div className="cardtitle">
+        <div
+          className="cardtitle"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            height: 74,
+            alignItems: "center",
+          }}
+        >
           <div
             style={{
               fontWeight: 700,
@@ -85,6 +131,25 @@ const AddTreatment = () => {
           >
             Fido Mass Cell
           </div>
+          <Button
+            onClick={openDialog}
+            variant="contained"
+            color="secondary"
+            style={{
+              marginRight: 31,
+              backgroundColor: "#D95767",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <FontAwesomeIcon
+              icon={faEdit}
+              style={{
+                marginRight: 10,
+              }}
+            />
+            Cancel
+          </Button>
         </div>
         <div>
           <div className="cardbody-theraphy">
@@ -135,6 +200,34 @@ const AddTreatment = () => {
                     value={tindication}
                   />
                 </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    paddingLeft: 42,
+                    paddingRight: 20,
+                    justifyContent: "space-between",
+                    marginBottom: "8px",
+                  }}
+                >
+                  <span className="label">Tumor Size(cm)</span>
+                  <div className="tumor-div">
+                    <div>Length</div>
+                    <input
+                      type="text"
+                      className="tumor-size"
+                      onChange={(e) => setLength(e.target.value)}
+                      value={length}
+                    />
+                    <div>Width</div>
+                    <input
+                      type="text"
+                      className="tumor-size"
+                      onChange={(e) => setWidth(e.target.value)}
+                      value={width}
+                    />
+                  </div>
+                </div>
                 <div
                   style={{
                     display: "flex",
@@ -152,23 +245,7 @@ const AddTreatment = () => {
                     value={tumorType}
                   />
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    paddingLeft: 42,
-                    paddingRight: 20,
-                    justifyContent: "space-between",
-                    marginBottom: "8px",
-                  }}
-                >
-                  <span className="label">Tumor Volume</span>
-                  <input
-                    type="text"
-                    className="inputTypeTherapy"
-                    onChange={(e) => setTumorVolume(e.target.value)}
-                    value={tumorVolume}
-                  />
-                </div>
+
                 <div
                   style={{
                     display: "flex",
@@ -273,9 +350,10 @@ const AddTreatment = () => {
                     marginBottom: "8px",
                   }}
                 >
-                  <span className="label">Therapeutic</span>
+                  <span className="label">Therapeutic Used?</span>
                   <input
                     type="text"
+                    placeholder="Yes/No"
                     className="inputTypeTherapy"
                     onChange={(e) => setTherapeutic(e.target.value)}
                     value={therapeutic}
@@ -293,10 +371,46 @@ const AddTreatment = () => {
                   <span className="label">Therapeutic Name</span>
                   <input
                     type="text"
+                    placeholder="Cisplatin/Bleomycin/Calcium Cloride"
                     className="inputTypeTherapy"
-                    onChange={(e) => setTname(e.target.value)}
+                    onChange={(e) => setTValue(e.target.value)}
                     value={tname}
                   />
+                </div>
+
+                <div
+                  className="span-history"
+                  style={{
+                    display: "flex",
+                    paddingLeft: 42,
+                    paddingRight: 10,
+                    justifyContent: "space-between",
+                    marginBottom: "8px",
+                  }}
+                >
+                  <span>
+                    <b>Suggested Injection Volume(ml)</b>
+                  </span>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-start",
+                      width: 265,
+                      alignItems: "center",
+                    }}
+                  >
+                    <div>
+                      <b>{tvolume}</b>
+                    </div>
+                    <FontAwesomeIcon
+                      icon={faCircleQuestion}
+                      color="#0d99ff"
+                      style={{
+                        height: "20px",
+                        marginLeft: 10,
+                      }}
+                    ></FontAwesomeIcon>
+                  </div>
                 </div>
                 <div
                   style={{
@@ -307,7 +421,7 @@ const AddTreatment = () => {
                     marginBottom: "8px",
                   }}
                 >
-                  <span className="label">Injection Volume(IV)</span>
+                  <span className="label">Injection Volume Used(ml)</span>
                   <input
                     type="text"
                     className="inputTypeTherapy"
@@ -547,6 +661,15 @@ const AddTreatment = () => {
           <span style={{ marginLeft: "10px" }}> {"Save Treatment"} </span>
         </button>
       </div>
+      <ActionDialog
+        open={openAction}
+        title={"Are you sure you want to cancel?"}
+        titleContent={"You will lose any unsaved changes. "}
+        handleClose={closeDialog}
+        handleEnter={dialogAction}
+        closeText={"Continue editing"}
+        enterText={"Yes, cancel my changes"}
+      />
     </>
   );
 };

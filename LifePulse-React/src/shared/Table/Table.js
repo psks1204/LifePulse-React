@@ -73,7 +73,7 @@ const onChange = (pagination, filters, sorter, extra) => {
   console.log('params', pagination, filters, sorter, extra);
 };
 
-const App = ( { columns , data}  ) => <Table columns={columns} dataSource={data} onChange={onChange} />;
+const App = ( { columns , data}  ) => <Table columns={columns} dataSource={data} onChange={onChange} pagination={false} />;
 
 export default App;
 

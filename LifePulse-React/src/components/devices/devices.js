@@ -63,12 +63,12 @@ useEffect( ()=>{
             <>
               <div style={{ display:'flex' ,   justifyContent:'flex-start'}} >
                 <div style={{marginTop:'20px' , minHeight:'40px' ,   }} >
-                <SearchBar placeholder= 'My Devices'   />
+                <SearchBar placeholder= 'Search Devices'   />
                   
                 </div>
                 
-                <button style={{backgroundColor:'#21AAE1', borderRadius:'4px', margin :'10px 40px', height:'30px' , marginTop:'22px',color:'#FFFFFF' , display:'flex' , justifyContent:'center' , alignItems:'center'}}><AddIcon /> 
-                 {'My Devices'}
+                <button className='add' style={{display: 'flex', alignItems: 'center'}}><AddIcon /> 
+                 {'Add Devices'}
                 </button>
               </div>
                

@@ -1,7 +1,25 @@
+import { Link } from "react-router-dom";
+import { Avatar } from '@mui/material';
+import device from "./devices.jpg"; 
+
 const columns = [
     {
       title: 'Device Name',
-      dataIndex: 'deviceName',           
+      dataIndex: 'deviceName',       
+      render: (text, record) => (
+        <div style={{
+          display: 'flex'
+        }}>
+        <Avatar sx={{ width: 24, height: 24 }} alt={text} src={device} />
+        <Link
+          to={``}
+          state={{ from: text }}
+          style={{ color: "blue", marginLeft: 20 }}
+        >
+          {text}
+        </Link>
+        </div>
+      ),    
       sorter: (a, b) => a.name.length - b.name.length,     
     },
     {

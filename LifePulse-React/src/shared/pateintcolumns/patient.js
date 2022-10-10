@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDog, faCat } from "@fortawesome/free-solid-svg-icons";
+import { faDog, faCat,faPaw } from "@fortawesome/free-solid-svg-icons";
+
 import { Link } from "react-router-dom";
 const columns = [
   {
@@ -7,21 +8,21 @@ const columns = [
     render: (text, record) =>
       text === "Dog" ? (
         <FontAwesomeIcon
-          icon={faDog}
+        icon={faPaw}
           style={{
-            color: "green",
-            border: "1.5px solid green",
+           
+            border: "1.5px solid blue",
             borderRadius: "50%",
           }}
         />
       ) : (
         <FontAwesomeIcon
           style={{
-            color: "green",
-            border: "1.5px solid green",
+           
+            border: "1.5px solid blue",
             borderRadius: "50%",
           }}
-          icon={faCat}
+          icon={faPaw}
         />
       ),
   },

@@ -10,6 +10,8 @@ import PatientDetail from "../components/patientDetail/patientDetail";
 import AddTherapy from "../components/addTherapy/addTherapy";
 import AddTreatment from "../components/addTreatment/addTreatment";
 
+import EditPatient from "../components/editPatient/editPatient";
+
 export const homepath = "/home"
 export const helppath='/info'
 export const loginpath="/"
@@ -19,8 +21,15 @@ export const addpatientpath="/addpatient"
 export const patientDetail="/patientDetail"
 export const addTherapy = "/addTherapy";
 export const addTreatment = "/addTreatment";
+export const editPatient ="/editPatient";
 
 export const routeConfig = [
+
+  {
+    path: editPatient,
+    component: EditPatient,
+    layout: Layout,
+  },
   {
     path: addpatientpath,
     component: Singlepatient,

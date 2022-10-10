@@ -87,7 +87,8 @@ top: 142px; */
 }
 .therapy-box-history {
   width: 1139px;
-  height: 293px;
+  height: auto;
+  margin-bottom: 20px;
   /* margin-top: 30px; */
   display: flex;
   justify-content: flex-start;

@@ -20,6 +20,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import { Box } from "@material-ui/core";
 import axios from "axios";
+import ActionDialog from "../actionDialog/ActionDialog";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -96,10 +97,10 @@ const AntTab = withStyles((theme) => ({
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 0,
   },
   padding: {
-    padding: theme.spacing(3),
+    // padding: theme.spacing(3),
   },
   demo1: {
     backgroundColor: theme.palette.background.paper,
@@ -113,7 +114,7 @@ function PatientDetail() {
   const [pDetail, setpDetail] = useState();
   const search = useLocation().search;
   const id = new URLSearchParams(search).get("id");
-
+  localStorage.setItem('pid',id);
   const classes = useStyles();
   let history = useNavigate()
   const [value, setValue] = React.useState(0);
@@ -137,22 +138,19 @@ function PatientDetail() {
       .catch((err) => console.log(err));
   };
 
-  const tableData = [
-    {
-      key: 1,
-      treatmentName: "#Treatment2",
-      specialist: "John Hughes",
-      sessionLength: "30 Minutes",
-      date: "07/15/2022",
-    },
-    {
-      key: 2,
-      treatmentName: "#Treatment1",
-      specialist: "Jenna Johnson",
-      sessionLength: "30 Minutes",
-      date: "07/15/2022",
-    },
-  ];
+  const [openAction, setOpenAction] = useState(false);
+
+  const openDialog = () => {
+    setOpenAction(true);
+  };
+  const closeDialog = () => {
+    setOpenAction(false);
+  };
+
+  const dialogAction = () => {
+    setOpenAction(false);
+    handleDeleteChange();
+  };
 
   return (
     pDetail && (
@@ -178,12 +176,15 @@ function PatientDetail() {
               backgroundColor: "#D95767",
               border: "1px solid #D95767",
             }}
-            onClick={handleDeleteChange}
+            onClick={openDialog}
           >
             <FontAwesomeIcon icon={faTrash} />
             <span style={{ marginLeft: "10px" }}> {"Delete"} </span>
           </button>
-          <button className="upload-pt">
+          <button
+            className="upload-pt"
+            onClick={() => history(`/editPatient?id=${id}`)}
+          >
             <FontAwesomeIcon icon={faEdit} />
             <span style={{ marginLeft: "10px" }}> {"Edit Patient"} </span>
           </button>
@@ -325,9 +326,9 @@ function PatientDetail() {
                   minHeight: 100,
                 }}
               >
-                <span className="allergy">Dust Mites</span>
-                <span className="allergy">Latex</span>
-                <span className="allergy">Penicillin</span>
+                {pDetail?.allergies?.map((item, index) => (
+                  <span className="allergy">{item}</span>
+                ))}
               </div>
             </div>
           </div>
@@ -518,58 +519,15 @@ function PatientDetail() {
           </div>
         </div>
 
-        <div>
-          <div
-            className="cardtitle"
-            style={{
-              height: 76,
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <div
-              style={{
-                fontWeight: 700,
-                fontSize: 24,
-                marginLeft: "20px",
-                paddingTop: "6px",
-              }}
-              className="prev-treatment-header"
-            >
-              Previous Treatment
-            </div>
-            <button
-              className="createbtn"
-              style={{
-                color: "#21AAE1",
-                width: "177px",
-                height: "40px",
-                marginRight: 40,
-                backgroundColor: "#FFFFFF",
-              }}
-              onClick={() => history(`/addTreatment?id=${id}`)}
-            >
-              <FontAwesomeIcon icon={faPlus} /> Add Treatment
-            </button>
-          </div>
-          <div>
-            <div className="cardbody">
-              <div style={{ display: "flex", justifyContent: "space-around" }}>
-                <div
-                  style={{
-                    margin: "6px",
-                    width: "100%",
-                    border: "1px solid #ccc",
-                    boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.25)",
-                  }}
-                >
-                  <Table columns={columns.patientTreatment} data={tableData} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ActionDialog
+          open={openAction}
+          title={"Are you sure you want to delete this patient?"}
+          titleContent={"This action cannot be undone."}
+          handleClose={closeDialog}
+          handleEnter={dialogAction}
+          closeText={"No, don’t delete"}
+          enterText={"Yes, delete"}
+        />
       </div>
     )
   );
