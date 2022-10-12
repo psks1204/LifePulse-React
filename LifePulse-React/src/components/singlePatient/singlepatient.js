@@ -296,10 +296,21 @@ function Singlepatient() {
                     marginBottom: "8px",
                   }}
                 >
-                  <span className="label">Date Of Birth</span>
+                  <span className="label">BirthDate</span>
                   <input
                     type="text"
                     className="inputType"
+                    style={{ width: 70 }}
+                    onChange={(e) => setDob(e.target.value)}
+                    value={dob}
+                  />
+                  <span className="label" style={{ marginLeft: 8 }}>
+                    Age
+                  </span>
+                  <input
+                    type="text"
+                    className="inputType"
+                    style={{ width: 50 }}
                     onChange={(e) => setDob(e.target.value)}
                     value={dob}
                   />
@@ -352,7 +363,7 @@ function Singlepatient() {
               paddingTop: "6px",
             }}
           >
-            Care History
+            Histology
           </div>
         </div>
         <div>
@@ -387,7 +398,7 @@ function Singlepatient() {
                     marginBottom: "8px",
                   }}
                 >
-                  <span className="label">Indication</span>
+                  <span className="label">Cancer Type</span>
                   <input
                     type="text"
                     className="inputType"
@@ -553,7 +564,7 @@ function Singlepatient() {
                     marginBottom: "8px",
                   }}
                 >
-                  <span className="label">Theraphy Name </span>
+                  <span className="label">Therapy Name </span>
                   <input
                     type="text"
                     className="inputType"

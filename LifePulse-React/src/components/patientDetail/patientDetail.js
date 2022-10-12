@@ -34,7 +34,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -66,6 +66,7 @@ const AntTab = withStyles((theme) => ({
     borderTopRightRadius: "10px",
     width: 212,
     height: 44,
+    padding: 0,
     marginRight: 4,
     fontFamily: [
       "-apple-system",
@@ -203,9 +204,7 @@ function PatientDetail() {
             {/* <Typography className={classes.padding} /> */}
             <TabPanel value={value} index={0}>
               <div className="main-history-box">
-                <div className="span-history">
-                  Click Edit Patient to add or modify Histology Detail{" "}
-                </div>
+                
                 <div className="therapy-box-history">
                   <div className="therapy-tile">
                     <span className="tile-heading">Diagnosis</span>
@@ -220,7 +219,13 @@ function PatientDetail() {
                     </span>
                   </div>
                   <div className="therapy-tile">
-                    <span className="tile-heading">Weight</span>
+                    <span className="tile-heading">Indication</span>
+                    <span className="tile-content">
+                      {pDetail?.histology?.indication}
+                    </span>
+                  </div>
+                  <div className="therapy-tile">
+                    <span className="tile-heading">Patient Initial Weight</span>
                     <span className="tile-content">
                       {pDetail?.histology?.weight}
                     </span>
@@ -232,9 +237,15 @@ function PatientDetail() {
                     </span>
                   </div>
                   <div className="therapy-tile">
-                    <span className="tile-heading">Indicator</span>
+                    <span className="tile-heading">Comorbidities</span>
                     <span className="tile-content">
-                      {pDetail?.histology?.indication}
+                      {pDetail?.histology?.comorbidities}
+                    </span>
+                  </div>
+                  <div className="therapy-tile">
+                    <span className="tile-heading">Surgery</span>
+                    <span className="tile-content">
+                      {pDetail?.histology?.surgery}
                     </span>
                   </div>
                 </div>
@@ -242,9 +253,7 @@ function PatientDetail() {
             </TabPanel>
             <TabPanel value={value} index={1}>
               <div className="main-history-box">
-                <div className="span-history">
-                  Click Edit Patient to add or modify Histology Detail{" "}
-                </div>
+                
                 <div className="therapy-box-history">
                   <div className="therapy-tile">
                     <span className="tile-heading">Patient Name</span>
@@ -268,9 +277,11 @@ function PatientDetail() {
                       {pDetail?.ownerContact}
                     </span>
                   </div>
-                  <div className="therapy-tile">
+                  <div className="therapy-tile" style={{paddingRight: 20}}>
                     <span className="tile-heading">Date of Birth</span>
                     <span className="tile-content">{pDetail?.dob}</span>
+                    <span className="tile-heading">Age</span>
+                    <span className="tile-content">{11}</span>
                   </div>
                   <div className="therapy-tile">
                     <span className="tile-heading">Last Session</span>
@@ -390,17 +401,24 @@ function PatientDetail() {
                         </span>
                       </div>
                       <div className="therapy-tile">
-                        <span className="tile-heading">Tumor Type</span>
-                        <span className="tile-content">
-                          {item?.theraphyFields?.tumorType}
-                        </span>
-                      </div>
-                      <div className="therapy-tile">
                         <span className="tile-heading">
                           Current Weight (kg)
                         </span>
                         <span className="tile-content">
                           {item?.theraphyFields?.pweight}
+                        </span>
+                      </div>
+                      <div className="therapy-tile">
+                        <span className="tile-heading">Indication</span>
+                        <span className="tile-content">
+                          {item?.theraphyFields?.tindication}
+                        </span>
+                      </div>
+
+                      <div className="therapy-tile">
+                        <span className="tile-heading">Therapeutic used</span>
+                        <span className="tile-content">
+                          {item?.theraphyFields?.therapeutic}
                         </span>
                       </div>
                       <div className="therapy-tile">
@@ -410,49 +428,23 @@ function PatientDetail() {
                         </span>
                       </div>
                       <div className="therapy-tile">
-                        <span className="tile-heading">
-                          Objective Response (%)
-                        </span>
-                        <span className="tile-content">
-                          {item?.theraphyFields?.ores}
-                        </span>
-                      </div>
-                      <div className="therapy-tile">
                         <span className="tile-heading">Therapeutic Name</span>
                         <span className="tile-content">
                           {item?.theraphyFields?.tname}
                         </span>
                       </div>
                       <div className="therapy-tile">
-                        <span className="tile-heading">Therapeutic</span>
+                        <span className="tile-heading">Tumor Type</span>
                         <span className="tile-content">
-                          {item?.theraphyFields?.therapeutic}
+                          {item?.theraphyFields?.tumorType}
                         </span>
                       </div>
                       <div className="therapy-tile">
                         <span className="tile-heading">
-                          Retreatment Required
+                          Injection Volume Used (ml)
                         </span>
                         <span className="tile-content">
-                          {item?.theraphyFields?.retreat}
-                        </span>
-                      </div>
-                      <div className="therapy-tile">
-                        <span className="tile-heading">Cell Type</span>
-                        <span className="tile-content">
-                          {item?.theraphyFields?.cellType}
-                        </span>
-                      </div>
-                      <div className="therapy-tile">
-                        <span className="tile-heading">Overall Stage</span>
-                        <span className="tile-content">
-                          {item?.theraphyFields?.overAllStage}
-                        </span>
-                      </div>
-                      <div className="therapy-tile">
-                        <span className="tile-heading">TNM Stage</span>
-                        <span className="tile-content">
-                          {item?.theraphyFields?.tnmStage}
+                          {item?.theraphyFields?.ivolume}
                         </span>
                       </div>
                       <div className="therapy-tile">
@@ -462,9 +454,24 @@ function PatientDetail() {
                         </span>
                       </div>
                       <div className="therapy-tile">
-                        <span className="tile-heading">Indication</span>
+                        <span className="tile-heading">Cell Type</span>
                         <span className="tile-content">
-                          {item?.theraphyFields?.tindication}
+                          {item?.theraphyFields?.cellType}
+                        </span>
+                      </div>
+
+                      <div className="therapy-tile">
+                        <span className="tile-heading">
+                          Objective Response (%)
+                        </span>
+                        <span className="tile-content">
+                          {item?.theraphyFields?.ores}
+                        </span>
+                      </div>
+                      <div className="therapy-tile">
+                        <span className="tile-heading">TNM Stage</span>
+                        <span className="tile-content">
+                          {item?.theraphyFields?.tnmStage}
                         </span>
                       </div>
                       <div className="therapy-tile">
@@ -474,11 +481,18 @@ function PatientDetail() {
                         </span>
                       </div>
                       <div className="therapy-tile">
+                        <span className="tile-heading">Overall Stage</span>
+                        <span className="tile-content">
+                          {item?.theraphyFields?.overAllStage}
+                        </span>
+                      </div>
+
+                      <div className="therapy-tile">
                         <span className="tile-heading">
-                          Injection Volume Used (ml)
+                          Retreatment Required
                         </span>
                         <span className="tile-content">
-                          {item?.theraphyFields?.ivolume}
+                          {item?.theraphyFields?.retreat}
                         </span>
                       </div>
                     </div>

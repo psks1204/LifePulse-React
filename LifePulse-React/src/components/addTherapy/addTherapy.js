@@ -659,7 +659,7 @@ const AddTherapy = () => {
 
         <button className="save-treatment" onClick={addTherapy}>
           <FontAwesomeIcon icon={faSave} />
-          <span style={{ marginLeft: "10px" }}> {"Save Treatment"} </span>
+          <span style={{ marginLeft: "10px" }}> {"Save Therapy"} </span>
         </button>
       </div>
       <ActionDialog
