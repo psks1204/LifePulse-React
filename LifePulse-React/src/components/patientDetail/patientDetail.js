@@ -382,7 +382,7 @@ function PatientDetail() {
                 <div
                   className="cardtitle"
                   style={{
-                    height: 461,
+                    height: 515,
                   }}
                 >
                   <div
